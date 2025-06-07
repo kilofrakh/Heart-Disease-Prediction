@@ -1,4 +1,4 @@
-# 🫀 Heart Disease Risk Predictor (GUI App)
+# 🫀 Heart Disease Predictor
 
 A modern GUI-based machine learning application that predicts the **10-year risk of coronary heart disease (CHD)** using **logistic regression** trained on the **Framingham Heart Study** dataset.
 

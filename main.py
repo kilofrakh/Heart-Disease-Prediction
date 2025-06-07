@@ -8,7 +8,9 @@ import matplotlib.pyplot as plt
 import matplotlib.mlab as mlab
 import seaborn as sns
 from sklearn.model_selection import train_test_split
-
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import confusion_matrix, classification_report
 
 
 disease_df = pd.read_csv("framingham.csv")
@@ -33,3 +35,34 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 print ('Train set:', X_train.shape,  y_train.shape)
 print ('Test set:', X_test.shape,  y_test.shape)
+
+
+plt.figure(figsize=(7, 5))
+sns.countplot(x='TenYearCHD', data=disease_df,
+             palette="BuGn_r")
+plt.show()
+
+
+
+
+logreg = LogisticRegression()
+logreg.fit(X_train, y_train)
+y_pred = logreg.predict(X_test)
+
+print('Accuracy of the model is =', 
+      accuracy_score(y_test, y_pred))
+
+
+print('The details for confusion matrix is =')
+print (classification_report(y_test, y_pred))
+
+cm = confusion_matrix(y_test, y_pred)
+conf_matrix = pd.DataFrame(data = cm, 
+                           columns = ['Predicted:0', 'Predicted:1'], 
+                           index =['Actual:0', 'Actual:1'])
+
+plt.figure(figsize = (8, 5))
+sns.heatmap(conf_matrix, annot = True, fmt = 'd', cmap = "Greens")
+
+plt.show()
+

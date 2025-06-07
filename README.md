@@ -50,7 +50,7 @@ The app:
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/<your-username>/heart-disease-predictor.git
+git clone https://github.com/<kilofrakh>/heart-disease-predictor.git
 cd heart-disease-predictor
 ```
 
